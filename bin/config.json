@@ -1,0 +1,17 @@
+{
+  "debug": 1,
+  "settings": {
+    "interval": 1
+  },
+  "src": {
+    "jdownloader": "C:\\Data\\JD",
+    "test": "C:\\Temp"
+  },
+  "dst": {
+    "path": "C:\\Destination"
+  },
+  "logger": {
+    "VTEQ-DEV-LOG": 0,
+    "VTEQ-RAR-LOG": 1
+  }
+}
