@@ -11,7 +11,7 @@
 # ---------------------------------------------- #
 
 
-# start application
+# imports
 from boot import startup
 
 

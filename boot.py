@@ -30,7 +30,7 @@ for setting, value in settings[0].items():
 
 
 # Start Scheduler
-def runVRAR(schedule):
+def vrarScheduler(schedule):
     """
     - Looping function to run itself based on a given timer
     - TIMER_INTERVAL gets applied *after* VRAR controller ran through
@@ -48,7 +48,7 @@ def runVRAR(schedule):
     print "\nfinished doing stuff...\n"
 
     # Run itself (and start scheduler)
-    TIMER.enter(TIMER_INTERVAL, TIMER_PRIO, runVRAR, (schedule,))
+    TIMER.enter(TIMER_INTERVAL, TIMER_PRIO, vrarScheduler, (schedule,))
 
 
 # Startup
@@ -78,5 +78,5 @@ def startup():
     # Write log
     utils.logger(0, "Starting VRAR Scheduler, Timer Delay: {delay}s Priority: {prio}".format(delay=TIMER_INTERVAL, prio=TIMER_PRIO))
     # Start and enter Interval Timer
-    TIMER.enter(10, TIMER_PRIO, runVRAR, (TIMER,))
+    TIMER.enter(10, TIMER_PRIO, vrarScheduler, (TIMER,))
     TIMER.run()
