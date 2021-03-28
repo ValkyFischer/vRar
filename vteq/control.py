@@ -44,7 +44,7 @@ def control():
 				try:
 					if len(listdir(extractPath)):
 						# Write Error Log
-						utils.logger(9, "Traceback Error: {err}".format(err="UnrarError"))
+						utils.logger(9, "ERROR: {err}".format(err="UnrarError"))
 						utils.logger(9, "Destination Path {path} is not empty.".format(path=extractPath))
 				except WindowsError:
 					# Write Log
@@ -58,7 +58,7 @@ def control():
 		# Path DOES NOT exist
 		except StopIteration:
 			# Write Error Log
-			utils.logger(9, "Traceback Error: {err}".format(err="ConfigError"))
+			utils.logger(9, "ERROR: {err}".format(err="ConfigError"))
 			utils.logger(9, "Destination Path {path} does not exist.".format(path=dstPath))
 
 
@@ -95,7 +95,7 @@ def discover(archives, dirs=None):
 		# Path DOES NOT exist
 		except StopIteration:
 			# Write Error Log
-			utils.logger(9, "Traceback Error: {err}".format(err="ConfigError"))
+			utils.logger(9, "ERROR: {err}".format(err="ConfigError"))
 			utils.logger(9, "Path {path} does not exist.".format(path=srcPath))
 
 	# IMPORTANT: Enter this, when dir path IS NOT known
