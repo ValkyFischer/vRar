@@ -5,7 +5,7 @@
 # Description:      pack and unpack archives     #
 # ---------------------------------------------- #
 # Author:           fischer@valkyteq.com         #
-# Date:             2021-03-27                   #
+# Date:             2021-03-28                   #
 # Version:          0.0.0001                     #
 # Copyright:        VALKYTEQ (c) 2021            #
 # ---------------------------------------------- #
@@ -43,8 +43,12 @@ def unrar(sourcePath, destinationPath, ext=None):
     cmd = subprocess.Popen([RAR_PATH, "x", sourcePath, ext, destinationPath], stderr=subprocess.PIPE, stdout=subprocess.PIPE)
     cmdErr, cmdOut = cmd.communicate()
 
-    logger(1, cmdErr)
-    logger(1, cmdOut)
+    output = cmdErr.splitlines()
+    for line in output:
+        if "Creating" in line:
+            logger(1, line)
+        elif "Extracting" in line:
+            logger(1, line)
 
 
 # pack rar
@@ -111,7 +115,8 @@ def logger(log, message, fileName=None):
 
     # Load types from config
     logTypes = {"VTEQ-DEV-LOG": 0,
-                "VTEQ-RAR-LOG": 1}
+                "VTEQ-RAR-LOG": 1,
+                "VTEQ-ERR-LOG": 9}
 
     # Check for correct log type
     for logType, logID in logTypes.items():

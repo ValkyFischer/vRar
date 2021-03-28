@@ -5,14 +5,14 @@
 # Description:      pack and unpack archives     #
 # ---------------------------------------------- #
 # Author:           fischer@valkyteq.com         #
-# Date:             2021-03-27                   #
+# Date:             2021-03-28                   #
 # Version:          0.0.0001                     #
 # Copyright:        VALKYTEQ (c) 2021            #
 # ---------------------------------------------- #
 
 
 # imports
-from vteq import utils
+from vteq import utils, control
 from sched import scheduler
 from time import time, sleep
 
@@ -37,15 +37,8 @@ def vrarScheduler(schedule):
     :param object schedule: Needs built in "sched" as input
     """
 
-    print "\nstarting doing stuff...\n"
-
-    # Load branches from config
-    _, paths = utils.config("src")
-    for srcType, srcPath in paths[0].items():
-        if srcPath is not "":
-            utils.logger(0, "Found settings for '" + srcType + "' in config: " + srcPath)
-
-    print "\nfinished doing stuff...\n"
+    control.control()
+    utils.logger(0, "*" * 70)
 
     # Run itself (and start scheduler)
     TIMER.enter(TIMER_INTERVAL, TIMER_PRIO, vrarScheduler, (schedule,))
@@ -62,7 +55,7 @@ def startup():
     strLine =    "*" * 70
     strTitle =   "VRAR - VALKYTEQ Rar Archive Resolution"
     strAuthor =  "Author    :  fischer@valkyteq.com"
-    strDate =    "Date      :  2021-03-27"
+    strDate =    "Date      :  2021-03-28"
     strVersion = "Version   :  v0.0.0001"
     strCright =  "Copyright :  VALKYTEQ (c) 2021"
     startupLog = [strLine, strTitle, strLine, strAuthor, strDate, strVersion, strCright, strLine]
@@ -73,7 +66,7 @@ def startup():
 
     # Check if Debug Mode is enabled
     if utils.config("debug"):
-        utils.logger(0, "Debug Mode enabled")
+        utils.logger(0, "Debug Mode enabled: VERBOSE")
 
     # Write log
     utils.logger(0, "Starting VRAR Scheduler, Timer Delay: {delay}s Priority: {prio}".format(delay=TIMER_INTERVAL, prio=TIMER_PRIO))
