@@ -6,7 +6,7 @@
 # ---------------------------------------------- #
 # Author:           fischer@valkyteq.com         #
 # Date:             2021-03-28                   #
-# Version:          0.0.0001                     #
+# Version:          1.0.0001                     #
 # Copyright:        VALKYTEQ (c) 2021            #
 # ---------------------------------------------- #
 
@@ -65,7 +65,7 @@ def control():
 # Find all files
 def discover(archives, dirs=None):
 	"""
-	- Discovers all RAR archives based on paths in config
+	- Discovers all files based on paths in config
 	- Finds files in all subfolder
 	:param list archives: List of files
 	:param str dirs: Optional: Directory names

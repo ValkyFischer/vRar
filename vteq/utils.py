@@ -6,7 +6,7 @@
 # ---------------------------------------------- #
 # Author:           fischer@valkyteq.com         #
 # Date:             2021-03-28                   #
-# Version:          0.0.0001                     #
+# Version:          1.0.0001                     #
 # Copyright:        VALKYTEQ (c) 2021            #
 # ---------------------------------------------- #
 
@@ -114,9 +114,9 @@ def logger(log, message, fileName=None):
     """
 
     # Load types from config
-    logTypes = {"VTEQ-DEV-LOG": 0,
-                "VTEQ-RAR-LOG": 1,
-                "VTEQ-ERR-LOG": 9}
+    logTypes = {"[VTEQ-DEV-LOG]": 0,
+                "[VTEQ-RAR-LOG]": 1,
+                "[VTEQ-ERR-LOG]": 9}
 
     # Check for correct log type
     for logType, logID in logTypes.items():
@@ -135,7 +135,7 @@ def logger(log, message, fileName=None):
                 logFile = LOG_PATH + dateFile + "_system.log"
 
             # Create log message
-            logMessage = dateLogger + " [" + logType + "] " + message
+            logMessage = dateLogger + ";" + logType + ";" + message + ";"
 
             # Check debug mode
             if config("debug"):
