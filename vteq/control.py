@@ -20,6 +20,8 @@ def control():
 
 	# Discover archives
 	archives = discover([])
+	dstPath = ""
+
 	if archives is not []:
 
 		# Write Log
